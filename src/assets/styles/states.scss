@@ -1,0 +1,19 @@
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .6s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.appear-enter-active, .appear-leave-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity .2s, transform .3s;
+}
+.appear-enter, .appear-leave-to {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity .2s, transform .3s;
+}

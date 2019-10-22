@@ -1,0 +1,14 @@
+@import "./states.scss";
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+}
+
+@font-face{
+  font-family: 'Sw_font';
+  src: url('../fonts/Star_jedi.ttf');
+}
