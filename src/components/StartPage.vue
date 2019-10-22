@@ -15,6 +15,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/vars.scss';
+
 .start {
   background: url('../assets/wall.jpg');
   width: 100%;
@@ -26,7 +28,7 @@ export default {
     color: #FFF;
     height: 60px;
     border-radius: 6px;
-    background: #000;
+    background: $colorDark;
     font-size: 18px;
     letter-spacing: 2px;
     outline: none;

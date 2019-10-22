@@ -11,7 +11,6 @@ Vue.config.productionTip = false;
 Vue.prototype.$api = api;
 Vue.prototype.$hostname = HOSTNAME;
 
-
 new Vue({
   router,
   store,

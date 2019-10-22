@@ -4,7 +4,9 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 const StartPage = () => import('./components/StartPage')
-const MainPage = () => import('./components/MainPage')
+const PeoplePage = () => import('./components/PeoplePage')
+const PersonPage = () => import('./components/PersonPage')
+const NotFoundPage = () => import('./components/errors/NotFoundPage')
 
 export default new Router({
     mode: 'history',
@@ -17,7 +19,23 @@ export default new Router({
       {
         path: '/',
         name: 'home',
-        component: MainPage
+        component: PeoplePage
       },
+      {
+        path: '/people',
+        name: 'people',
+        component: PeoplePage,
+      },
+      {
+        path: '/people/:id',
+        name: 'person',
+        component: PersonPage,
+        props: true
+      },
+      {
+        path: '*',
+        name: 'notfound',
+        component: NotFoundPage
+      }
     ]
 });
