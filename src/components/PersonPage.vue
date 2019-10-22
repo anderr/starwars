@@ -45,12 +45,7 @@ export default {
   async created() {
     this.$store.commit('setGlobalLoader', true);
 
-    const personId = parseFloat(this.$route.params.id);
-
-    await this.fetchPersonInfo(personId)
-      .finally(() => {
-        this.$store.commit('setGlobalLoader', false);
-      })
+    this.fetchPersonInfo(this.$route.params.id)
   },
   methods: {
     async fetchPersonInfo(id) {

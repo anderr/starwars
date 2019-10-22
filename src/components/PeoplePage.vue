@@ -5,10 +5,10 @@
       <div
         v-for="(item, index) in people.results"
         :key="index"
-        @click="$router.push({ name: 'person', params: { id: generateIndex(index) } })"
+        @click="$router.push({ name: 'person', params: { id: characterId(item.url) } })"
         class="main__person"
       >
-        <div class="main__person-name">{{ item.name }} ({{ generateIndex(index) }})</div>
+        <div class="main__person-name">{{ item.name }} <small>({{ characterId(item.url) }})</small></div>
         <div class="main__person-addon">{{ gender(item.gender) }}</div>
         <div class="main__person-addon">Рост: {{ item.height }}</div>
         <div class="main__person-addon">Вес: {{ item.mass }}</div>
@@ -71,6 +71,7 @@ export default {
           })
 
         this.people = data;
+
       } else {
         this.people = await this.$api.get('people')
           .finally(() => {
@@ -78,8 +79,13 @@ export default {
             this.loadingProcess = false;
           })
       }
+    },
 
-      console.log(this.people);
+    // без айди бэкенд не крутой (
+    characterId(url) {
+      let urlArray = url.split('/');
+
+      return urlArray[urlArray.length - 2];
     },
 
     gender(gender) {
@@ -89,14 +95,6 @@ export default {
         return 'Женщина'
       } else {
         return 'Пол не определен'
-      }
-    },
-
-    generateIndex(index) {
-      if (this.page === 1) {
-        return index + 1
-      } else {
-        return (this.page - 1) * 10 + index + 1
       }
     }
   }
